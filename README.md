@@ -5,6 +5,8 @@
 ## Links
 
 - [Reference Documentation (ColumbusX-API)](https://mckinley-and-rice.github.io/seers-api/)
+
+
 - OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/seers-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/seers-api/openapi.yaml)
 
 **Warning:** All above links are updated only after Travis CI finishes deployment
