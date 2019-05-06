@@ -2,11 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "ColumbusX",
+    "title": "Seers API",
     "termsOfService": "https://columbusx.io/terms/",
     "contact": {
       "email": "hello@columbusx.io",
-      "url": "http://columbusx.io/contact"
+      "url": "http://seers.io/contact"
     },
     "license": {
       "name": "Apache 2.0",
@@ -19,7 +19,7 @@
   },
   "externalDocs": {
     "description": "Find out how to create Github repo for your OpenAPI spec.",
-    "url": "https://github.com/mckinley-and-rice/columbusx-api"
+    "url": "https://github.com/mckinley-and-rice/seers-api"
   },
   "tags": [
     {
@@ -33,16 +33,16 @@
   ],
   "servers": [
     {
-      "url": "http://columbusx.io/api/v1"
+      "url": "http://seers.io/api/v1"
     },
     {
-      "url": "https://columbusx.io/api/v1"
+      "url": "https://seers.io/api/v1"
     },
     {
-      "url": "http://columbusx.com/api/v1"
+      "url": "http://seers.com/api/v1"
     },
     {
-      "url": "https://columbusx.com/api/v1"
+      "url": "https://seers.com/api/v1"
     }
   ],
   "paths": {
