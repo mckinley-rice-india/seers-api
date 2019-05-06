@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: ColumbusX
+  title: Seers API
   termsOfService: 'https://columbusx.io/terms/'
   contact:
     email: hello@columbusx.io
-    url: 'http://columbusx.io/contact'
+    url: 'http://seers.io/contact'
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -16,7 +16,8 @@ info:
 
     # Introduction
 
-    This specification is intended to to be a good starting point for describing your API in 
+    This specification is intended to to be a good starting point for describing
+    your API in 
 
     [OpenAPI/Swaggerformat](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
 
@@ -24,8 +25,8 @@ info:
     [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
     tool and 
 
-    [ColumbusX-API](https://github.com/mckinley-and-rice/columbusx-api) documentation engine. So beyond
-    the standard OpenAPI syntax we use a few 
+    [ColumbusX-API](https://github.com/mckinley-and-rice/columbusx-api)
+    documentation engine. So beyond the standard OpenAPI syntax we use a few 
 
     [vendor
     extensions](https://github.com/mckinley-and-rice/columbusx-api/blob/master/docs/redoc-vendor-extensions.md).
@@ -49,14 +50,14 @@ info:
     guesswork in calling the service.
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
-  url: 'https://github.com/mckinley-and-rice/columbusx-api'
+  url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
   - name: Echo
     description: Example echo operations
   - name: User
     description: Operations about user
 servers:
-  - url: 'http://columbusx.io/api/v1'
-  - url: 'https://columbusx.io/api/v1'
-  - url: 'http://columbusx.com/api/v1'
-  - url: 'https://columbusx.com/api/v1'
+  - url: 'http://seers.io/api/v1'
+  - url: 'https://seers.io/api/v1'
+  - url: 'http://seers.com/api/v1'
+  - url: 'https://seers.com/api/v1'
