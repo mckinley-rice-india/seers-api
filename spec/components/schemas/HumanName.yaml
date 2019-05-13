@@ -1,0 +1,14 @@
+type: array
+items:
+  type: object
+  properties:
+    given:
+      type: array
+      items:
+        type: string
+        description: 'Given names, include first and middle names.'
+        example: John
+    family:
+      type: string
+      description: Family name (surname).
+      example: Doe

@@ -1,0 +1,18 @@
+type: object
+properties:
+  coding:
+    type: object
+    description: Data structure with a specific code and a reference to its coding system.
+    properties:
+      system:
+        type: string
+        example: 'http://snomed.info/sct'
+      code:
+        type: string
+        example: '27113001'
+      display:
+        type: string
+        example: ''
+  text:
+    type: string
+    example: ''

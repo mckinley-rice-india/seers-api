@@ -1,0 +1,24 @@
+type: object
+properties:
+  code:
+    type: string
+    example: BID
+  event:
+    type: array
+    items:
+      $ref: '#/components/schemas/dateTime'
+  repeat:
+    type: object
+    properties:
+      frequency:
+        type: integer
+        example: 2
+      period:
+        type: string
+        example: '1'
+      periodUnit:
+        type: string
+        example: day
+      count:
+        type: integer
+        example: 3

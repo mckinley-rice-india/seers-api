@@ -1,0 +1,7 @@
+type: string
+enum:
+  - male
+  - female
+  - other
+  - unkown
+example: male

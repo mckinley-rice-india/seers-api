@@ -1,0 +1,19 @@
+type: object
+properties:
+  username:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  firstName:
+    description: User first name
+    type: string
+    minLength: 1
+    example: hemprasad
+  lastName:
+    description: User last name
+    type: string
+    minLength: 1
+    example: badgujar
+  email:
+    $ref: '#/components/schemas/Email'

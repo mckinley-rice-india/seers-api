@@ -1,10 +1,10 @@
 # Seers-API Specification
 
-[![Build Status](https://travis-ci.org/mckinley-and-rice/columbusx-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/seers-api.)
+[![Build Status](https://travis-ci.org/mckinley-and-rice/seers-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/seers-api.)
 
 ## Links
 
-- [Reference Documentation (ColumbusX-API)](https://mckinley-and-rice.github.io/seers-api/)
+- [Reference Documentation (Seers-API)](https://mckinley-and-rice.github.io/seers-api/)
 
 
 - OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/seers-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/seers-api/openapi.yaml)
@@ -53,4 +53,5 @@ tags:
   - name: Admin
     description: Operations about Admin
 ```
+
 2. 

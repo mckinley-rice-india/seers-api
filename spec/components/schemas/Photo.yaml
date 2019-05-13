@@ -1,0 +1,12 @@
+type: array
+items:
+  type: object
+  properties:
+    contentType:
+      type: string
+      description: 'Mime type of the content, with charset etc.'
+      example: image/jpeg
+    url:
+      type: string
+      description: Uri where the data can be found
+      example: 'tactio://patient/c358cf8a-52e3-11e8-bc3a-060d65c81b8b/photo'

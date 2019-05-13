@@ -1,0 +1,16 @@
+type: array
+items:
+  type: object
+  properties:
+    use:
+      type: string
+      description: home | work | temp | old - purpose of this address
+      example: home
+    type:
+      type: string
+      description: postal | physical | both
+      example: both
+    text:
+      type: string
+      description: Text representation of the address
+      example: '3122 Lowndes Hill Park Road Bakersfield 93308 California '

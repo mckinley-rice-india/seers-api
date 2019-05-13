@@ -1,0 +1,20 @@
+type: object
+properties:
+  numerator:
+    type: object
+    properties:
+      value:
+        type: number
+        example: 100
+      unit:
+        type: string
+        example: ml
+  denominator:
+    type: object
+    properties:
+      value:
+        type: number
+        example: 1
+      unit:
+        type: string
+        example: h

@@ -75,7 +75,7 @@ tags:
   - name: Payment
     description: Operations about Payment
   - name: Recommendation
-    description: Operations about Payment
+    description: Operations about Doctor Recommedation
 servers:
   - url: 'http://seers.io/api/'
   - url: 'https://seers.io/api/'
