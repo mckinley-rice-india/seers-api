@@ -30,16 +30,114 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
-  - name: Echo
-    description: Example echo operations
+  - name: Admin
+    description: Operations about Admin
   - name: User
-    description: Operations about user
+    description: Operations about Doctor and Patient
+  - name: Measurement
+    description: Operations on Measurement
+  - name: Assessment
+    description: Operations on Assessment
+  - name: Appointment
+    description: Operations on Appointment
+  - name: Video Session
+    description: Operations on Video Session
+  - name: photo sharing
+    description: Operations on photos
+  - name: Educational Videos
+    description: Operations on Educational Videos
+  - name: Portal Control
+    description: Operations for Portal Control
+  - name: Admin Services
+    description: Operations about Admin Services
+  - name: Payment
+    description: Operations about Payment
+  - name: Recommendation
+    description: Operations about Payment
 servers:
-  - url: 'http://seers.io/api/v1'
-  - url: 'https://seers.io/api/v1'
-  - url: 'http://seers.com/api/v1'
-  - url: 'https://seers.com/api/v1'
+  - url: 'http://seers.io/api/'
+  - url: 'https://seers.io/api/'
+  - url: 'http://seers.com/api/'
+  - url: 'https://seers.com/api/'
 paths:
+  '/admin/{username}':
+    parameters:
+      - name: pretty_print
+        in: query
+        description: Pretty print response
+        schema:
+          type: boolean
+    get:
+      tags:
+        - Admin
+      summary: Get user by user name
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getUserByName
+      parameters:
+        - name: username
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+        - name: with_email
+          in: query
+          description: Filter users without email
+          schema:
+            type: boolean
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                username: user1
+                email: user@columbusx.com
+        '403':
+          description: Forbidden
+        '404':
+          description: User not found
+    put:
+      tags:
+        - Admin
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - name: username
+          in: path
+          description: The name that needs to be updated
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'write:users'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid user supplied
+        '404':
+          description: User not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Updated user object
+        required: true
   /echo:
     post:
       tags:
@@ -110,84 +208,6 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
-  '/users/{username}':
-    parameters:
-      - name: pretty_print
-        in: query
-        description: Pretty print response
-        schema:
-          type: boolean
-    get:
-      tags:
-        - User
-      summary: Get user by user name
-      description: |
-        Some description of the operation. 
-        You can use `markdown` here.
-      operationId: getUserByName
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be fetched
-          required: true
-          schema:
-            type: string
-        - name: with_email
-          in: query
-          description: Filter users without email
-          schema:
-            type: boolean
-      security:
-        - main_auth:
-            - 'read:users'
-        - api_key: []
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-              example:
-                username: user1
-                email: user@columbusx.com
-        '403':
-          description: Forbidden
-        '404':
-          description: User not found
-    put:
-      tags:
-        - User
-      summary: Updated user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
-      parameters:
-        - name: username
-          in: path
-          description: The name that needs to be updated
-          required: true
-          schema:
-            type: string
-      security:
-        - main_auth:
-            - 'write:users'
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Invalid user supplied
-        '404':
-          description: User not found
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Updated user object
-        required: true
 components:
   schemas:
     Email:
@@ -233,7 +253,7 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: 'http://columbusx.com/api/oauth/dialog'
+          authorizationUrl: 'http://seers.com/api/oauth/dialog'
           scopes:
             'read:users': read users info
             'write:users': modify or remove users
