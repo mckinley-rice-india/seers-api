@@ -52,12 +52,32 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
-  - name: Echo
-    description: Example echo operations
+  - name: Admin
+    description: Operations about Admin
   - name: User
-    description: Operations about user
+    description: Operations about Doctor and Patient
+  - name: Measurement
+    description: Operations on Measurement
+  - name: Assessment
+    description: Operations on Assessment
+  - name: Appointment
+    description: Operations on Appointment
+  - name: Video Session
+    description: Operations on Video Session
+  - name: photo sharing
+    description: Operations on photos
+  - name: Educational Videos
+    description: Operations on Educational Videos
+  - name: Portal Control
+    description: Operations for Portal Control
+  - name: Admin Services
+    description: Operations about Admin Services
+  - name: Payment
+    description: Operations about Payment
+  - name: Recommendation
+    description: Operations about Payment
 servers:
-  - url: 'http://seers.io/api/v1'
-  - url: 'https://seers.io/api/v1'
-  - url: 'http://seers.com/api/v1'
-  - url: 'https://seers.com/api/v1'
+  - url: 'http://seers.io/api/'
+  - url: 'https://seers.io/api/'
+  - url: 'http://seers.com/api/'
+  - url: 'https://seers.com/api/'

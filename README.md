@@ -1,4 +1,4 @@
-# Seers-API OpenAPI Specification
+# Seers-API Specification
 
 [![Build Status](https://travis-ci.org/mckinley-and-rice/columbusx-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/seers-api.)
 
@@ -42,3 +42,15 @@ Validates the spec.
 
 #### `npm run gh-pages`
 Deploys docs to GitHub Pages. You don't need to run it manually if you have Travis CI configured.
+
+
+
+## Editor steps
+
+1. Add tags to create section
+```yaml 
+tags:
+  - name: Admin
+    description: Operations about Admin
+```
+2. 
