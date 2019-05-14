@@ -2,8 +2,7 @@ get:
   tags:
     - User
   summary: Get All patients.
-  description: |
-    Get a list with patients' information.
+  description: Get a list with patients' information.
   parameters:
     - name: group-id
       in: query
