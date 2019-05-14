@@ -1,8 +1,0 @@
-
-apiTitle: ColumbusX-API
-splitSpec: true
-codeSamples: true
-swaggerUI: true
-travis: true
-repo: mckinley-and-rice/columbusx-api
-oasVersion: 3.0.0
