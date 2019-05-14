@@ -7,7 +7,7 @@ parameters:
 get:
   tags:
     - Admin
-  summary: Get admin user by user name
+  summary: Get admin user by username
   description: |
     Some description of the operation. 
     You can use `markdown` here.
