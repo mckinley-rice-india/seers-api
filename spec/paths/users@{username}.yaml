@@ -6,12 +6,12 @@ parameters:
       type: boolean
 get:
   tags:
-    - Admin
-  summary: Get admin user by username
+    - User
+  summary: Get user by user name
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: getAdminByName
+  operationId: getUserByName
   parameters:
     - name: username
       in: path
@@ -44,10 +44,10 @@ get:
       description: User not found
 put:
   tags:
-    - Admin
-  summary: Add Admin  user
+    - User
+  summary: Updated user
   description: This can only be done by the logged in user.
-  operationId: addAdminUser
+  operationId: updateUser
   parameters:
     - name: username
       in: path

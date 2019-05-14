@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Seers API
+  title: ColumbusX
   termsOfService: 'https://columbusx.io/terms/'
   contact:
     email: hello@columbusx.io
-    url: 'http://seers.io/contact'
+    url: 'http://columbusx.io/contact'
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -16,8 +16,7 @@ info:
 
     # Introduction
 
-    This specification is intended to to be a good starting point for describing
-    your API in 
+    This specification is intended to to be a good starting point for describing your API in 
 
     [OpenAPI/Swaggerformat](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
 
@@ -25,8 +24,8 @@ info:
     [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
     tool and 
 
-    [ColumbusX-API](https://github.com/mckinley-and-rice/columbusx-api)
-    documentation engine. So beyond the standard OpenAPI syntax we use a few 
+    [ColumbusX-API](https://github.com/mckinley-and-rice/columbusx-api) documentation engine. So beyond
+    the standard OpenAPI syntax we use a few 
 
     [vendor
     extensions](https://github.com/mckinley-and-rice/columbusx-api/blob/master/docs/redoc-vendor-extensions.md).
@@ -50,34 +49,14 @@ info:
     guesswork in calling the service.
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
-  url: 'https://github.com/mckinley-and-rice/seers-api'
+  url: 'https://github.com/mckinley-and-rice/columbusx-api'
 tags:
-  - name: Admin
-    description: Operations about Admin
+  - name: Echo
+    description: Example echo operations
   - name: User
-    description: Operations about Doctor and Patient
-  - name: Measurement
-    description: Operations on Measurement
-  - name: Assessment
-    description: Operations on Assessment
-  - name: Appointment
-    description: Operations on Appointment
-  - name: Video Session
-    description: Operations on Video Session
-  - name: photo sharing
-    description: Operations on photos
-  - name: Educational Videos
-    description: Operations on Educational Videos
-  - name: Portal Control
-    description: Operations for Portal Control
-  - name: Admin Services
-    description: Operations about Admin Services
-  - name: Payment
-    description: Operations about Payment
-  - name: Recommendation
-    description: Operations about Doctor Recommedation
+    description: Operations about user
 servers:
-  - url: 'http://seers.io/api/'
-  - url: 'https://seers.io/api/'
-  - url: 'http://seers.com/api/'
-  - url: 'https://seers.com/api/'
+  - url: 'http://columbusx.io/api/v1'
+  - url: 'https://columbusx.io/api/v1'
+  - url: 'http://columbusx.com/api/v1'
+  - url: 'https://columbusx.com/api/v1'

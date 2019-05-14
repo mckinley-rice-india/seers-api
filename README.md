@@ -1,13 +1,11 @@
-# Seers-API OpenAPI Specification
+# ColumbusX-API OpenAPI Specification
 
-[![Build Status](https://travis-ci.org/mckinley-and-rice/seers-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/seers-api.)
+[![Build Status](https://travis-ci.org/mckinley-and-rice/columbusx-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/columbusx-api.)
 
 ## Links
 
-- [Reference Documentation (Seers-API)](https://mckinley-and-rice.github.io/seers-api/)
-
-
-- OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/seers-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/seers-api/openapi.yaml)
+- [Reference Documentation (ColumbusX-API)](https://mckinley-and-rice.github.io/columbusx-api/)
+- OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/columbusx-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/columbusx-api/openapi.yaml)
 
 **Warning:** All above links are updated only after Travis CI finishes deployment
 
@@ -42,22 +40,3 @@ Validates the spec.
 
 #### `npm run gh-pages`
 Deploys docs to GitHub Pages. You don't need to run it manually if you have Travis CI configured.
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-## Editor steps
-
-1. Add tags to create section
-```yaml 
-tags:
-  - name: Admin
-    description: Operations about Admin
-```
-
-2. 
-=======
->>>>>>> parent of 7add5d4... New tags and functionality added
-=======
->>>>>>> parent of 7add5d4... New tags and functionality added
