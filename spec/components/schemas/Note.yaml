@@ -1,7 +1,0 @@
-type: array
-items:
-  type: object
-  properties:
-    text:
-      type: string
-      example: This is a note
