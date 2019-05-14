@@ -52,11 +52,9 @@ externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
-  - name: Echo
-    description: Example echo operations
+  - name: Admin
+    description: Operations about Admin
   - name: User
-<<<<<<< HEAD
-<<<<<<< HEAD
     description: Operations about Doctor and Patient
   - name: Measurement
     description: Operations on Measurement
@@ -78,14 +76,8 @@ tags:
     description: Operations about Payment
   - name: Recommendation
     description: Operations about Doctor Recommedation
-=======
-    description: Operations about user
->>>>>>> parent of 7add5d4... New tags and functionality added
-=======
-    description: Operations about user
->>>>>>> parent of 7add5d4... New tags and functionality added
 servers:
-  - url: 'http://seers.io/api/v1'
-  - url: 'https://seers.io/api/v1'
-  - url: 'http://seers.com/api/v1'
-  - url: 'https://seers.com/api/v1'
+  - url: 'http://seers.io/api/'
+  - url: 'https://seers.io/api/'
+  - url: 'http://seers.com/api/'
+  - url: 'https://seers.com/api/'
