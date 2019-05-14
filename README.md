@@ -43,6 +43,7 @@ Validates the spec.
 #### `npm run gh-pages`
 Deploys docs to GitHub Pages. You don't need to run it manually if you have Travis CI configured.
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -56,5 +57,7 @@ tags:
 ```
 
 2. 
+=======
+>>>>>>> parent of 7add5d4... New tags and functionality added
 =======
 >>>>>>> parent of 7add5d4... New tags and functionality added

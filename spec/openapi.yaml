@@ -56,6 +56,7 @@ tags:
     description: Example echo operations
   - name: User
 <<<<<<< HEAD
+<<<<<<< HEAD
     description: Operations about Doctor and Patient
   - name: Measurement
     description: Operations on Measurement
@@ -77,6 +78,9 @@ tags:
     description: Operations about Payment
   - name: Recommendation
     description: Operations about Doctor Recommedation
+=======
+    description: Operations about user
+>>>>>>> parent of 7add5d4... New tags and functionality added
 =======
     description: Operations about user
 >>>>>>> parent of 7add5d4... New tags and functionality added
