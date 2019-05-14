@@ -1,4 +1,4 @@
-# Seers-API Specification
+# Seers-API OpenAPI Specification
 
 [![Build Status](https://travis-ci.org/mckinley-and-rice/seers-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/seers-api.)
 
@@ -42,6 +42,7 @@ Validates the spec.
 
 #### `npm run gh-pages`
 Deploys docs to GitHub Pages. You don't need to run it manually if you have Travis CI configured.
+<<<<<<< HEAD
 
 
 
@@ -55,3 +56,5 @@ tags:
 ```
 
 2. 
+=======
+>>>>>>> parent of 7add5d4... New tags and functionality added

@@ -6,8 +6,13 @@ parameters:
       type: boolean
 get:
   tags:
+<<<<<<< HEAD:spec/paths/admin@{username}.yaml
     - Admin
   summary: Get admin user by user name
+=======
+    - User
+  summary: Get user by user name
+>>>>>>> parent of 7add5d4... New tags and functionality added:spec/paths/users@{username}.yaml
   description: |
     Some description of the operation. 
     You can use `markdown` here.
@@ -44,8 +49,13 @@ get:
       description: User not found
 put:
   tags:
+<<<<<<< HEAD:spec/paths/admin@{username}.yaml
     - Admin
   summary: Add Admin  user
+=======
+    - User
+  summary: Updated user
+>>>>>>> parent of 7add5d4... New tags and functionality added:spec/paths/users@{username}.yaml
   description: This can only be done by the logged in user.
   operationId: addAdminUser
   parameters:
