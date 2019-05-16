@@ -1,0 +1,6 @@
+type: object
+properties:
+  id:
+    description: Video ID
+    type: string
+    example: hemprasad

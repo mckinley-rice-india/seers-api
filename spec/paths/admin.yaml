@@ -1,0 +1,70 @@
+parameters:
+  - name: Operations of Admin Users
+    in: query
+    description: status response
+    schema:
+      type: string
+post:
+  tags:
+    - Admin User
+  summary: Get server status
+  description: |
+    Some description of the operation. 
+    You can use `markdown` here.
+  operationId: createAdmin
+  security:
+    - main_auth:
+        - 'read:users'
+    - api_key: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            Status: ONLINE
+    '403':
+      description: Forbidden
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Video'
+          example:
+            Status: 0
+            response: No token provided
+put:
+  tags:
+    - Admin User
+  summary: Get server status
+  description: |
+    Some description of the operation. 
+    You can use `markdown` here.
+  operationId: updateAdmin
+  security:
+    - main_auth:
+        - 'read:users'
+    - api_key: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            Status: ONLINE
+    '403':
+      description: Forbidden
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Video'
+          example:
+            Status: 0
+            response: No token provided

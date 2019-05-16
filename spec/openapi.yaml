@@ -27,13 +27,37 @@ info:
 
     [vendor
     extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).
+
+
+    # Status header response code:
+
+    500 - Internal Server Error
+
+
+    401 - Unauthorized. Token invalid
+
+
+    200 - OK
+
+
+    404 - Not Found
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
+  - name: Status
+    description: Status echo operations for server
   - name: Echo
     description: Example echo operations
   - name: User
-    description: Operations about user
+    description: Operations about Doctor and Patient user
+  - name: Educational Videos
+    description: Operations about educational Videos for Patients
+  - name: Authentication
+    description: All Operations about authentication for ALl users
+  - name: Registration
+    description: All Operations about authentication for ALl users
+  - name: Admin User
+    description: Operations about Admin user
 servers:
   - url: 'https://seersapi.mckinleyrice.com/api/v1'
