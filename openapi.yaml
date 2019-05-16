@@ -18,17 +18,192 @@ info:
     This specification is intended to to be a good starting point for describing your API in It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and 
     [seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few 
     [vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).
+
+    # Status header response code:
+    500 - Internal Server Error
+
+    401 - Unauthorized. Token invalid
+
+    200 - OK
+
+    404 - Not Found
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
+  - name: Status
+    description: Status echo operations for server
   - name: Echo
     description: Example echo operations
   - name: User
-    description: Operations about user
+    description: Operations about Doctor and Patient user
+  - name: Educational Videos
+    description: Operations about educational Videos for Patients
+  - name: Authentication
+    description: All Operations about authentication for ALl users
+  - name: Registration
+    description: All Operations about authentication for ALl users
+  - name: Admin User
+    description: Operations about Admin user
 servers:
   - url: 'https://seersapi.mckinleyrice.com/api/v1'
 paths:
+  /admin:
+    parameters:
+      - name: Operations of Admin Users
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Admin User
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: createAdmin
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+    put:
+      tags:
+        - Admin User
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: updateAdmin
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+  '/admin/{id}':
+    parameters:
+      - name: Operations of Admin Users
+        in: query
+        description: status response
+        schema:
+          type: string
+    delete:
+      tags:
+        - Admin User
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: deleteAdmin
+      parameters:
+        - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+  /auth/authenticate:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Authentication
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: authAll
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
   /echo:
     post:
       tags:
@@ -99,6 +274,116 @@ paths:
             } catch (UnprocessableEntityException $e) {
                 var_dump($e->getErrors());
             }
+  /health:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    get:
+      tags:
+        - Status
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getStatus
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+  /register/doctor:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Registration
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: registerDoctor
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+  /register/patient:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Registration
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: registerPatient
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
   '/users/{username}':
     parameters:
       - name: pretty_print
@@ -177,6 +462,115 @@ paths:
               $ref: '#/components/schemas/User'
         description: Updated user object
         required: true
+  /video:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Educational Videos
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: postVideo
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+    put:
+      tags:
+        - Educational Videos
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: putVideo
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+  '/video/{id}':
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    delete:
+      tags:
+        - Educational Videos
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: deleteVideo
+      parameters:
+        - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: ONLINE
 components:
   schemas:
     Email:
@@ -204,6 +598,13 @@ components:
           example: badgujar
         email:
           $ref: '#/components/schemas/Email'
+    Video:
+      type: object
+      properties:
+        id:
+          description: Video ID
+          type: string
+          example: hemprasad
   headers:
     ExpiresAfter:
       description: date in UTC when token expires

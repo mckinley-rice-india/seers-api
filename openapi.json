@@ -15,7 +15,7 @@
     "x-logo": {
       "url": "./logo.png"
     },
-    "description": "This is an Seers API to demonstrate features of seers API specification\n\n# Introduction\nThis specification is intended to to be a good starting point for describing your API in It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and \n[seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few \n[vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).\n"
+    "description": "This is an Seers API to demonstrate features of seers API specification\n\n# Introduction\nThis specification is intended to to be a good starting point for describing your API in It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and \n[seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few \n[vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).\n\n# Status header response code:\n500 - Internal Server Error\n\n401 - Unauthorized. Token invalid\n\n200 - OK\n\n404 - Not Found\n"
   },
   "externalDocs": {
     "description": "Find out how to create Github repo for your OpenAPI spec.",
@@ -23,12 +23,32 @@
   },
   "tags": [
     {
+      "name": "Status",
+      "description": "Status echo operations for server"
+    },
+    {
       "name": "Echo",
       "description": "Example echo operations"
     },
     {
       "name": "User",
-      "description": "Operations about user"
+      "description": "Operations about Doctor and Patient user"
+    },
+    {
+      "name": "Educational Videos",
+      "description": "Operations about educational Videos for Patients"
+    },
+    {
+      "name": "Authentication",
+      "description": "All Operations about authentication for ALl users"
+    },
+    {
+      "name": "Registration",
+      "description": "All Operations about authentication for ALl users"
+    },
+    {
+      "name": "Admin User",
+      "description": "Operations about Admin user"
     }
   ],
   "servers": [
@@ -37,6 +57,253 @@
     }
   ],
   "paths": {
+    "/admin": {
+      "parameters": [
+        {
+          "name": "Operations of Admin Users",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Admin User"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "createAdmin",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admin User"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "updateAdmin",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/{id}": {
+      "parameters": [
+        {
+          "name": "Operations of Admin Users",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Admin User"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "deleteAdmin",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The name that needs to be fetched",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/authenticate": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "authAll",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/echo": {
       "post": {
         "tags": [
@@ -120,6 +387,181 @@
             "source": "$form = new \\API\\Entities\\Echo();\n$form->setMessage(\"Hello World!\");\ntry {\n    $pet = $client->echo()->post($form);\n} catch (UnprocessableEntityException $e) {\n    var_dump($e->getErrors());\n}\n"
           }
         ]
+      }
+    },
+    "/health": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "getStatus",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Server Not Working"
+          }
+        }
+      }
+    },
+    "/register/doctor": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "registerDoctor",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register/patient": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "registerPatient",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users/{username}": {
@@ -245,6 +687,179 @@
           "required": true
         }
       }
+    },
+    "/video": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "tags": [
+          "Educational Videos"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "postVideo",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": 0,
+                  "response": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Educational Videos"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "putVideo",
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Server Not Working"
+          }
+        }
+      }
+    },
+    "/video/{id}": {
+      "parameters": [
+        {
+          "name": "Get server health status",
+          "in": "query",
+          "description": "status response",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Educational Videos"
+        ],
+        "summary": "Get server status",
+        "description": "Some description of the operation. \nYou can use `markdown` here.\n",
+        "operationId": "deleteVideo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The name that needs to be fetched",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "main_auth": [
+              "read:users"
+            ]
+          },
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Video"
+                },
+                "example": {
+                  "Status": "ONLINE"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -278,6 +893,16 @@
           },
           "email": {
             "$ref": "#/components/schemas/Email"
+          }
+        }
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Video ID",
+            "type": "string",
+            "example": "hemprasad"
           }
         }
       }
