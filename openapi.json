@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "title": "seers",
     "termsOfService": "https://seers.io/terms/",
     "contact": {
-      "email": "hello@seers.io",
+      "email": "admin@mckinleyrice.com",
       "url": "http://seers.io/contact"
     },
     "license": {
@@ -15,7 +15,7 @@
     "x-logo": {
       "url": "./logo.png"
     },
-    "description": "This is an **example** API to demonstrate features of OpenAPI specification\n# Introduction\nThis specification is intended to to be a good starting point for describing your API in \n[OpenAPI/Swaggerformat](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).\nIt also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and \n[seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard OpenAPI syntax we use a few \n[vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).\n"
+    "description": "This is an Seers API to demonstrate features of seers API specification\n\n# Introduction\nThis specification is intended to to be a good starting point for describing your API in It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and \n[seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few \n[vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).\n"
   },
   "externalDocs": {
     "description": "Find out how to create Github repo for your OpenAPI spec.",

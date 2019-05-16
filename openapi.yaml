@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
+  version: 1.0.2
   title: seers
   termsOfService: 'https://seers.io/terms/'
   contact:
-    email: hello@seers.io
+    email: admin@mckinleyrice.com
     url: 'http://seers.io/contact'
   license:
     name: Apache 2.0
@@ -12,12 +12,11 @@ info:
   x-logo:
     url: ./logo.png
   description: |
-    This is an **example** API to demonstrate features of OpenAPI specification
+    This is an Seers API to demonstrate features of seers API specification
+
     # Introduction
-    This specification is intended to to be a good starting point for describing your API in 
-    [OpenAPI/Swaggerformat](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
-    It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and 
-    [seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard OpenAPI syntax we use a few 
+    This specification is intended to to be a good starting point for describing your API in It also demonstrates features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo) tool and 
+    [seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few 
     [vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
