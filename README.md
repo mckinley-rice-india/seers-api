@@ -17,6 +17,11 @@
 
 ### Usage
 
+```
+npm install
+npm start
+```
+
 #### `npm start`
 Starts the development server.
 
