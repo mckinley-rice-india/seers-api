@@ -1,13 +1,12 @@
-# ColumbusX-API OpenAPI Specification
+# Seers-API OpenAPI Specification
 
-[![Build Status](https://travis-ci.org/mckinley-and-rice/columbusx-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/columbusx-api.)
+[![Build Status](https://travis-ci.org/mckinley-and-rice/seers-api.svg?branch=master)](https://travis-ci.org/mckinley-and-rice/Seers-api.)
 
 ## Links
 
-- [Reference Documentation (ColumbusX-API)](https://mckinley-and-rice.github.io/columbusx-api/)
-- OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/columbusx-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/columbusx-api/openapi.yaml)
+- [Reference Documentation (Seers-API)](https://mckinley-and-rice.github.io/seers-api/)
+- OpenAPI Raw Files: [JSON](https://mckinley-and-rice.github.io/seers-api/openapi.json) [YAML](https://mckinley-and-rice.github.io/seers-api/openapi.yaml)
 
-**Warning:** All above links are updated only after Travis CI finishes deployment
 
 ## Working on specification
 ### Install

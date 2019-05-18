@@ -1,0 +1,39 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+    description: PERSNR
+  firstname:
+    type: string
+    description: VORNAME
+  lastname:
+    type: string
+    description: NAME
+  gender:
+    type: integer
+    format: int64
+    description: 'SEX, gender/sex'
+  phone:
+    type: integer
+    format: int64
+    description: PERSNR
+  address:
+    type: string
+    description: ''
+  profileImage:
+    type: string
+    description: VORNAME
+  userType:
+    type: string
+    default: patient
+  lastLogin:
+    type: string
+    format: date-time
+  isLogin:
+    type: boolean
+    default: false
+  isConfirmed:
+    type: boolean
+    default: true
+description: NATPERSON

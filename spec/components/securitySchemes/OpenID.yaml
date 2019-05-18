@@ -1,0 +1,2 @@
+type: openIdConnect
+openIdConnectUrl: 'https://example.com/.well-known/openid-configuration'

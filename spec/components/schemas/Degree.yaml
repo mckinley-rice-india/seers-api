@@ -4,10 +4,10 @@ properties:
     type: integer
     format: int64
     description: Degree ID
-  title:
+  name:
     type: string
-    description: Name of Video
-  link:
+    description: Name of Degree
+  year:
     type: string
-    format: uri
+    format: date
     description: year

@@ -1,0 +1,9 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+    description: PATIENTID
+  person:
+    $ref: '#/components/schemas/Person'
+description: Patient

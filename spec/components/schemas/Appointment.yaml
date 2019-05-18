@@ -1,0 +1,52 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+    description: NUMBER
+  title:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  agenda:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  patient:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  doctor:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  date:
+    description: User supplied username
+    type: string
+    minLength: 4
+    example: hemprasad
+  startTime:
+    type: string
+    format: date-time
+    description: GILT_AB of first CW_STUNDENPLAN
+  endTime:
+    type: string
+    format: date-time
+    description: GILT_AB of first CW_STUNDENPLAN
+  reminderEmail:
+    $ref: '#/components/schemas/Email'
+  confirmedByDoctor:
+    type: boolean
+    description: CW_KALENDER.DEAKTIVIERT
+    default: false
+  confirmedByPatient:
+    type: boolean
+    description: CW_KALENDER.DEAKTIVIERT
+    default: false
+  status:
+    type: string
+    description: 'State of the appointment: booked, cancelled, ...'
