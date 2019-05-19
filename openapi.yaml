@@ -19,106 +19,113 @@ info:
     [seers-API](https://github.com/mckinley-and-rice/seers-api) documentation engine. So beyond the standard SewersAPI syntax we use a few 
     [vendor extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).
 
-    # Status header response code:
-    500 - Internal Server Error
-
-    401 - Unauthorized. Token invalid
-
-    200 - OK
-
-    404 - Not Found
+    ## Status header response code:
+    ### Note
+      * 1xx: Informational - Request received, continuing process
+      * 2xx: Success - The action was successfully received, understood, and accepted
+      * 3xx: Redirection - Further action must be taken in order to complete the request
+      * 4xx: Client Error - The request contains bad syntax or cannot be fulfilled
+      * 5xx: Server Error - The server failed to fulfill an apparently valid request
+    ### Response code:
+    * 200 - Success.
+    * 201 - Created. Returned on successful creation of a new resource. Includes a 'Location' 
+    * 202 – Accepted The client requested to create something on the server. It was accepted, but it has not been completed.
+    * 203 – Non-Authoritative Information Information was transmitted, but it was not taken from the primary source.
+    * 204 – No Content The request was received, but there was no data sent to the client.
+    * 205 – Reset Content  Similar to 204, but the response also includes a request to update the content.
+    * 206 – Partial Content Only a portion of the header content was sent to the client.
+    * 207 – Multi-Status  The server passed the results of several independent operations at once
+    * 301 - The requested resource has been moved permanently.
+    * 302 - The requested resource has moved, but was found.
+    * 304 - The requested resource has not been modified since the last time you accessed it.
+    * 400 - Bad request. Data issues such as invalid JSON, etc.
+    * 401 - Unauthorized. Token invalid
+    * 404 - Not found. Resource not found on GET.
+    * 405 - Method not allowed.
+    * 406 - Not acceptable response.
+    * 409 - Conflict. Duplicate data or invalid data state would occur.
+    * 500 - Internal Server Error
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
-  - name: Status
+  - name: API Status
     description: Status echo operations for server
-  - name: Echo
-    description: Example echo operations
   - name: User
     description: Operations about Doctor and Patient user
-  - name: Educational Videos
-    description: Operations about educational Videos for Patients
-  - name: Authentication
+  - name: Authenticate
     description: All Operations about authentication for ALl users
   - name: Registration
     description: All Operations about authentication for ALl users
   - name: Admin User
     description: Operations about Admin user
+  - name: Images
+    description: Operations of Patient Images
+  - name: Educational Videos
+    description: Operations about educational Videos for Patients
+  - name: Appointment
+    description: Operations about Appointment
+  - name: Sample
+    description: Operations to make copy for other API
+  - name: Echo
+    description: Example echo operations
 servers:
   - url: 'https://seersapi.mckinleyrice.com/api/v1'
 paths:
-  /admin:
+  /admin':
     parameters:
       - name: Operations of Admin Users
         in: query
         description: status response
         schema:
-          type: string
+          $ref: '#/components/schemas/Admin'
     post:
       tags:
         - Admin User
-      summary: Get server status
+      summary: Create Admin User
       description: |
         Some description of the operation. 
         You can use `markdown` here.
       operationId: createAdmin
       security:
-        - main_auth:
-            - 'read:users'
-        - api_key: []
+        - basic_auth: []
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Admin'
               example:
-                Status: ONLINE
-        '403':
+                status: 1
+                response: Admin added successfully
+        '400':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+              example:
+                status: 0
+                response: Already an admin account for this email address
         '404':
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Video'
+                $ref: '#/components/schemas/Admin'
               example:
                 Status: 0
                 response: No token provided
-    put:
-      tags:
-        - Admin User
-      summary: Get server status
-      description: |
-        Some description of the operation. 
-        You can use `markdown` here.
-      operationId: updateAdmin
-      security:
-        - main_auth:
-            - 'read:users'
-        - api_key: []
-      responses:
-        '200':
-          description: Success
+        '500':
+          description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Admin'
               example:
-                Status: ONLINE
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Video'
-              example:
-                Status: 0
-                response: No token provided
+                status: 0
+                response: Something went wrong. Please try again
   '/admin/{id}':
     parameters:
       - name: Operations of Admin Users
@@ -129,13 +136,390 @@ paths:
     delete:
       tags:
         - Admin User
-      summary: Get server status
+      summary: Delete Admin User
       description: |
         Some description of the operation. 
         You can use `markdown` here.
       operationId: deleteAdmin
       parameters:
         - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - basic_auth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+              example:
+                Status: 0
+                response: No token provided
+    put:
+      tags:
+        - Admin User
+      summary: Update Admin User
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: updateAdmin
+      parameters:
+        - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - basic_auth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+  /appointment:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Appointment
+      summary: Create Appointment
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: postAppointment
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+              example:
+                Status: 0
+                response: No token provided
+    get:
+      tags:
+        - Appointment
+      summary: List of Appointment
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getAppointment
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+  '/appointment/{id}':
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    delete:
+      tags:
+        - Appointment
+      summary: Delete Appointment
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: deleteAppointment
+      parameters:
+        - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+    put:
+      tags:
+        - Appointment
+      summary: update Appointment
+      description: Some description of the operation. You can use `markdown` here.
+      operationId: updateAppointment
+      parameters:
+        - name: id
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+  '/appointment/doctor/{doctorid}':
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    delete:
+      tags:
+        - Appointment
+      summary: Delete Appointment - Doctor id
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: deleteAppointmentdoctorid
+      parameters:
+        - name: doctorid
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+    put:
+      tags:
+        - Appointment
+      summary: Update Appointment  - Doctor id
+      description: Some description of the operation. You can use `markdown` here.
+      operationId: updateAppointmentdoctorid
+      parameters:
+        - name: doctorid
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+    get:
+      tags:
+        - Appointment
+      summary: List of Appointments
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getAppointmentdoctorid
+      parameters:
+        - name: doctorid
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+  '/appointment/patient/{patientid}':
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    delete:
+      tags:
+        - Appointment
+      summary: Delete Appointment - Patient id
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: deleteAppointmentpatientid
+      parameters:
+        - name: patientid
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+    put:
+      tags:
+        - Appointment
+      summary: Get server status
+      description: Some description of the operation. You can use `markdown` here.
+      operationId: updateAppointmentpatientid
+      parameters:
+        - name: patientid
+          in: path
+          description: The name that needs to be fetched
+          required: true
+          schema:
+            type: string
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Forbidden
+        '404':
+          description: Server Not Working
+    get:
+      tags:
+        - Appointment
+      summary: List of Appointment
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getAppointmentpatientid
+      parameters:
+        - name: patientid
           in: path
           description: The name that needs to be fetched
           required: true
@@ -157,14 +541,7 @@ paths:
         '403':
           description: Forbidden
         '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Video'
-              example:
-                Status: 0
-                response: No token provided
+          description: Server Not Working
   /auth/authenticate:
     parameters:
       - name: Get server health status
@@ -174,12 +551,46 @@ paths:
           type: string
     post:
       tags:
-        - Authentication
-      summary: Get server status
+        - Authenticate
+      summary: Authenticate User (Login)
+      description: |
+        (All type of user) 
+      operationId: authAll
+      security:
+        - basic_auth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: 0
+                response: No token provided
+  /auth/logout:
+    parameters:
+      - name: Get server health status
+        in: query
+        description: status response
+        schema:
+          type: string
+    get:
+      tags:
+        - Authenticate
+      summary: Logout
       description: |
         Some description of the operation. 
         You can use `markdown` here.
-      operationId: authAll
+      operationId: logoutAll
       security:
         - main_auth:
             - 'read:users'
@@ -191,8 +602,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-              example:
-                Status: ONLINE
         '403':
           description: Forbidden
         '404':
@@ -200,7 +609,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Video'
+                $ref: '#/components/schemas/User'
               example:
                 Status: 0
                 response: No token provided
@@ -283,7 +692,7 @@ paths:
           type: string
     get:
       tags:
-        - Status
+        - API Status
       summary: Get server status
       description: |
         Some description of the operation. 
@@ -299,13 +708,85 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Status'
               example:
                 Status: ONLINE
         '403':
           description: Forbidden
         '404':
           description: Server Not Working
+  /images':
+    parameters:
+      - name: Operations of Admin Users
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Images
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: addImages
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+              example:
+                Status: 0
+                response: No token provided
+    get:
+      tags:
+        - Images
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: getimages
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Images
+                items:
+                  $ref: '#/components/schemas/Image'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+              example:
+                Status: 0
+                response: No token provided
   /register/doctor:
     parameters:
       - name: Get server health status
@@ -331,7 +812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Doctor'
               example:
                 Status: ONLINE
         '403':
@@ -341,7 +822,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Video'
+                $ref: '#/components/schemas/Doctor'
               example:
                 Status: 0
                 response: No token provided
@@ -360,6 +841,75 @@ paths:
         Some description of the operation. 
         You can use `markdown` here.
       operationId: registerPatient
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+              example:
+                Status: 0
+                response: No token provided
+  /sample:
+    parameters:
+      - name: Sample Operations
+        in: query
+        description: status response
+        schema:
+          type: string
+    post:
+      tags:
+        - Sample
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: postSample
+      security:
+        - main_auth:
+            - 'read:users'
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                Status: ONLINE
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Video'
+              example:
+                Status: 0
+                response: No token provided
+    put:
+      tags:
+        - Sample
+      summary: Get server status
+      description: |
+        Some description of the operation. 
+        You can use `markdown` here.
+      operationId: putSample
       security:
         - main_auth:
             - 'read:users'
@@ -576,10 +1126,10 @@ components:
     Admin:
       type: object
       properties:
-        password:
-          $ref: '#/components/schemas/Password'
         email:
           $ref: '#/components/schemas/Email'
+        password:
+          $ref: '#/components/schemas/Password'
         lastLogin:
           type: string
           format: date-time
@@ -682,6 +1232,20 @@ components:
       type: string
       format: test
       example: hemprasad.badgujar@columbusx.com
+    Image:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Image ID
+        title:
+          type: string
+          description: Name of Image
+        link:
+          type: string
+          format: uri
+          description: link of Image
     Password:
       description: User password
       type: string
@@ -747,6 +1311,12 @@ components:
         name:
           type: string
           description: VORNAME
+    Status:
+      description: Server Status
+      type: string
+      format: test
+      example:
+        status: ONLINE
     User:
       type: object
       properties:
@@ -773,14 +1343,14 @@ components:
         id:
           type: integer
           format: int64
-          description: Degree ID
+          description: Video ID
         title:
           type: string
           description: Name of Video
         link:
           type: string
           format: uri
-          description: year
+          description: link of Video
   headers:
     ExpiresAfter:
       description: date in UTC when token expires
@@ -799,7 +1369,7 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: 'http://columbusx.com/api/oauth/dialog'
+          authorizationUrl: 'http://seers.com/api/oauth/dialog'
           scopes:
             'read:users': read users info
             'write:users': modify or remove users
