@@ -1,17 +1,17 @@
 parameters:
-  - name: Operations of Admin Users
+  - name: Get server health status
     in: query
     description: status response
     schema:
       type: string
 delete:
   tags:
-    - Admin User
-  summary: Delete Admin User
+    - Appointment
+  summary: Delete Appointment
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: deleteAdmin
+  operationId: deleteAppointment
   parameters:
     - name: id
       in: path
@@ -20,16 +20,16 @@ delete:
       schema:
         type: string
   security:
-    - basic_auth: []
+    - main_auth:
+        - 'read:users'
+    - api_key: []
   responses:
     '200':
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Admin'
-          example:
-            Status: ONLINE
+            $ref: '#/components/schemas/Appointment'
     '403':
       description: Forbidden
     '404':
@@ -37,18 +37,13 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Admin'
-          example:
-            Status: 0
-            response: No token provided
+            $ref: '#/components/schemas/Appointment'
 put:
   tags:
-    - Admin User
-  summary: Update Admin User
-  description: |
-    Some description of the operation. 
-    You can use `markdown` here.
-  operationId: updateAdmin
+    - Appointment
+  summary: update Appointment
+  description: Some description of the operation. You can use `markdown` here.
+  operationId: updateAppointment
   parameters:
     - name: id
       in: path
@@ -57,24 +52,17 @@ put:
       schema:
         type: string
   security:
-    - basic_auth: []
+    - main_auth:
+        - 'read:users'
+    - api_key: []
   responses:
     '200':
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
-          example:
-            Status: ONLINE
+            $ref: '#/components/schemas/Appointment'
     '403':
       description: Forbidden
     '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Video'
-          example:
-            Status: 0
-            response: No token provided
+      description: Server Not Working

@@ -29,35 +29,82 @@ info:
     extensions](https://github.com/mckinley-and-rice/seers-api/blob/master/docs/redoc-vendor-extensions.md).
 
 
-    # Status header response code:
+    ## Status header response code:
 
-    500 - Internal Server Error
+    ### Note
+      * 1xx: Informational - Request received, continuing process
+      * 2xx: Success - The action was successfully received, understood, and accepted
+      * 3xx: Redirection - Further action must be taken in order to complete the request
+      * 4xx: Client Error - The request contains bad syntax or cannot be fulfilled
+      * 5xx: Server Error - The server failed to fulfill an apparently valid request
+    ### Response code:
 
+    * 200 - Success.
 
-    401 - Unauthorized. Token invalid
+    * 201 - Created. Returned on successful creation of a new resource. Includes
+    a 'Location' 
 
+    * 202 – Accepted The client requested to create something on the server. It
+    was accepted, but it has not been completed.
 
-    200 - OK
+    * 203 – Non-Authoritative Information Information was transmitted, but it
+    was not taken from the primary source.
 
+    * 204 – No Content The request was received, but there was no data sent to
+    the client.
 
-    404 - Not Found
+    * 205 – Reset Content  Similar to 204, but the response also includes a
+    request to update the content.
+
+    * 206 – Partial Content Only a portion of the header content was sent to the
+    client.
+
+    * 207 – Multi-Status  The server passed the results of several independent
+    operations at once
+
+    * 301 - The requested resource has been moved permanently.
+
+    * 302 - The requested resource has moved, but was found.
+
+    * 304 - The requested resource has not been modified since the last time you
+    accessed it.
+
+    * 400 - Bad request. Data issues such as invalid JSON, etc.
+
+    * 401 - Unauthorized. Token invalid
+
+    * 404 - Not found. Resource not found on GET.
+
+    * 405 - Method not allowed.
+
+    * 406 - Not acceptable response.
+
+    * 409 - Conflict. Duplicate data or invalid data state would occur.
+
+    * 500 - Internal Server Error
 externalDocs:
   description: Find out how to create Github repo for your OpenAPI spec.
   url: 'https://github.com/mckinley-and-rice/seers-api'
 tags:
-  - name: Status
+  - name: API Status
     description: Status echo operations for server
-  - name: Echo
-    description: Example echo operations
   - name: User
     description: Operations about Doctor and Patient user
-  - name: Educational Videos
-    description: Operations about educational Videos for Patients
-  - name: Authentication
+  - name: Authenticate
     description: All Operations about authentication for ALl users
   - name: Registration
     description: All Operations about authentication for ALl users
   - name: Admin User
     description: Operations about Admin user
+  - name: Images
+    description: Operations of Patient Images
+  - name: Educational Videos
+    description: Operations about educational Videos for Patients
+  - name: Appointment
+    description: Operations about Appointment
+  - name: Sample
+    description: Operations to make copy for other API
+  - name: Echo
+    description: Example echo operations
 servers:
   - url: 'https://seersapi.mckinleyrice.com/api/v1'

@@ -1,0 +1,100 @@
+parameters:
+  - name: Get server health status
+    in: query
+    description: status response
+    schema:
+      type: string
+delete:
+  tags:
+    - Appointment
+  summary: Delete Appointment - Patient id
+  description: |
+    Some description of the operation. 
+    You can use `markdown` here.
+  operationId: deleteAppointmentpatientid
+  parameters:
+    - name: patientid
+      in: path
+      description: The name that needs to be fetched
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'read:users'
+    - api_key: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Appointment'
+    '403':
+      description: Forbidden
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Appointment'
+put:
+  tags:
+    - Appointment
+  summary: Get server status
+  description: Some description of the operation. You can use `markdown` here.
+  operationId: updateAppointmentpatientid
+  parameters:
+    - name: patientid
+      in: path
+      description: The name that needs to be fetched
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'read:users'
+    - api_key: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Appointment'
+    '403':
+      description: Forbidden
+    '404':
+      description: Server Not Working
+get:
+  tags:
+    - Appointment
+  summary: List of Appointment
+  description: |
+    Some description of the operation. 
+    You can use `markdown` here.
+  operationId: getAppointmentpatientid
+  parameters:
+    - name: patientid
+      in: path
+      description: The name that needs to be fetched
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'read:users'
+    - api_key: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            Status: ONLINE
+    '403':
+      description: Forbidden
+    '404':
+      description: Server Not Working

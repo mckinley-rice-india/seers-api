@@ -1,0 +1,53 @@
+parameters:
+  - name: Operations of Admin Users
+    in: query
+    description: status response
+    schema:
+      $ref: '#/components/schemas/Admin'
+post:
+  tags:
+    - Admin User
+  summary: Create Admin User
+  description: |
+    Some description of the operation. 
+    You can use `markdown` here.
+  operationId: createAdmin
+  security:
+    - basic_auth: []
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Admin'
+          example:
+            status: 1
+            response: Admin added successfully
+    '400':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Admin'
+          example:
+            status: 0
+            response: Already an admin account for this email address
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Admin'
+          example:
+            Status: 0
+            response: No token provided
+    '500':
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Admin'
+          example:
+            status: 0
+            response: Something went wrong. Please try again

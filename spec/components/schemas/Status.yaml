@@ -1,0 +1,5 @@
+description: Server Status
+type: string
+format: test
+example:
+  status: ONLINE

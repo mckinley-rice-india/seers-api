@@ -22,9 +22,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
-          example:
-            Status: ONLINE
+            $ref: '#/components/schemas/Patient'
     '403':
       description: Forbidden
     '404':
@@ -32,7 +30,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Video'
+            $ref: '#/components/schemas/Patient'
           example:
             Status: 0
             response: No token provided

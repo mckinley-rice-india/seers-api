@@ -1,33 +1,28 @@
 parameters:
-  - name: Operations of Admin Users
+  - name: Get server health status
     in: query
     description: status response
     schema:
       type: string
-delete:
+post:
   tags:
-    - Admin User
-  summary: Delete Admin User
+    - Appointment
+  summary: Create Appointment
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: deleteAdmin
-  parameters:
-    - name: id
-      in: path
-      description: The name that needs to be fetched
-      required: true
-      schema:
-        type: string
+  operationId: postAppointment
   security:
-    - basic_auth: []
+    - main_auth:
+        - 'read:users'
+    - api_key: []
   responses:
     '200':
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Admin'
+            $ref: '#/components/schemas/Appointment'
           example:
             Status: ONLINE
     '403':
@@ -37,27 +32,22 @@ delete:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Admin'
+            $ref: '#/components/schemas/Appointment'
           example:
             Status: 0
             response: No token provided
-put:
+get:
   tags:
-    - Admin User
-  summary: Update Admin User
+    - Appointment
+  summary: List of Appointment
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: updateAdmin
-  parameters:
-    - name: id
-      in: path
-      description: The name that needs to be fetched
-      required: true
-      schema:
-        type: string
+  operationId: getAppointment
   security:
-    - basic_auth: []
+    - main_auth:
+        - 'read:users'
+    - api_key: []
   responses:
     '200':
       description: Success
@@ -70,11 +60,4 @@ put:
     '403':
       description: Forbidden
     '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Video'
-          example:
-            Status: 0
-            response: No token provided
+      description: Server Not Working

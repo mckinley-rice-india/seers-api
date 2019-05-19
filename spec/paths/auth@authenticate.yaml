@@ -6,16 +6,13 @@ parameters:
       type: string
 post:
   tags:
-    - Authentication
-  summary: Get server status
+    - Authenticate
+  summary: Authenticate User (Login)
   description: |
-    Some description of the operation. 
-    You can use `markdown` here.
+    (All type of user) 
   operationId: authAll
   security:
-    - main_auth:
-        - 'read:users'
-    - api_key: []
+    - basic_auth: []
   responses:
     '200':
       description: Success
@@ -23,8 +20,6 @@ post:
         application/json:
           schema:
             $ref: '#/components/schemas/User'
-          example:
-            Status: ONLINE
     '403':
       description: Forbidden
     '404':
@@ -32,7 +27,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Video'
+            $ref: '#/components/schemas/User'
           example:
             Status: 0
             response: No token provided

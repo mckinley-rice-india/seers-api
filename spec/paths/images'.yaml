@@ -6,12 +6,12 @@ parameters:
       type: string
 post:
   tags:
-    - Admin User
+    - Images
   summary: Get server status
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: createAdmin
+  operationId: addImages
   security:
     - main_auth:
         - 'read:users'
@@ -22,9 +22,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
-          example:
-            Status: ONLINE
+            $ref: '#/components/schemas/Image'
     '403':
       description: Forbidden
     '404':
@@ -32,18 +30,18 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Video'
+            $ref: '#/components/schemas/Image'
           example:
             Status: 0
             response: No token provided
-put:
+get:
   tags:
-    - Admin User
+    - Images
   summary: Get server status
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: updateAdmin
+  operationId: getimages
   security:
     - main_auth:
         - 'read:users'
@@ -54,7 +52,10 @@ put:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
+            type: array
+            description: Images
+            items:
+              $ref: '#/components/schemas/Image'
           example:
             Status: ONLINE
     '403':
@@ -64,7 +65,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Video'
+            $ref: '#/components/schemas/Image'
           example:
             Status: 0
             response: No token provided

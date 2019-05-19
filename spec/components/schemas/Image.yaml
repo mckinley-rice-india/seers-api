@@ -3,11 +3,11 @@ properties:
   id:
     type: integer
     format: int64
-    description: Video ID
+    description: Image ID
   title:
     type: string
-    description: Name of Video
+    description: Name of Image
   link:
     type: string
     format: uri
-    description: link of Video
+    description: link of Image

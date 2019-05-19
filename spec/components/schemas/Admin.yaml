@@ -1,9 +1,9 @@
 type: object
 properties:
-  password:
-    $ref: '#/components/schemas/Password'
   email:
     $ref: '#/components/schemas/Email'
+  password:
+    $ref: '#/components/schemas/Password'
   lastLogin:
     type: string
     format: date-time

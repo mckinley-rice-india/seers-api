@@ -22,7 +22,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/Doctor'
           example:
             Status: ONLINE
     '403':
@@ -32,7 +32,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Video'
+            $ref: '#/components/schemas/Doctor'
           example:
             Status: 0
             response: No token provided

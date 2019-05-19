@@ -6,12 +6,12 @@ parameters:
       type: string
 get:
   tags:
-    - API Status
-  summary: Get server status
+    - Authenticate
+  summary: Logout
   description: |
     Some description of the operation. 
     You can use `markdown` here.
-  operationId: getStatus
+  operationId: logoutAll
   security:
     - main_auth:
         - 'read:users'
@@ -22,10 +22,15 @@ get:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Status'
-          example:
-            Status: ONLINE
+            $ref: '#/components/schemas/User'
     '403':
       description: Forbidden
     '404':
-      description: Server Not Working
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            Status: 0
+            response: No token provided
